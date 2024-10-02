@@ -1,0 +1,54 @@
+// La fonction removeWords
+
+let WordstoRemove = ["ceci","un","java"];
+let original = "Hello ceci est un test Java";
+var i;
+var j;
+console.log("L'original :",original);
+console.log("Les mots qu'on doit enlever :",WordstoRemove)
+var separator = " ";
+
+
+function removeWords (original,WordstoRemove){
+    var arrayOfStrings = original.split(separator);
+        for(i = 0; i<arrayOfStrings.length;i++){
+            for(j = 0; j < WordstoRemove.length; j++){
+                if(arrayOfStrings[i]===WordstoRemove[j]){
+                    arrayOfStrings.splice(i,1);
+                }
+            }
+        }
+        return arrayOfStrings.join(" ");
+}
+
+console.log("La phrase après :",removeWords(original,WordstoRemove));
+
+//La fonction place populaire
+
+let places = ["Analamahitsy","Analamahitsy","Itaosy","Behoririka","Itaosy","Itaosy"];
+var cpt = 1;
+var k=0;
+function getMostPopularPlaces(places){
+    var popular = new Array();
+    var i = 0;
+    var l = i;
+    while(i<places.length){
+        for(j = l+1; j < places.length; j++){
+            if(places[i]===places[j]) {
+                cpt++;
+            }
+        }
+        if(cpt >= 2){
+            popular[k] = places[i]  ;
+            k++;
+            i+=2;
+        }
+        cpt=1;
+        i++;
+        l=i;
+    }
+
+    return popular.join(" ");
+}
+
+console.log("Le(s) quartier(s) les plus populaires :", getMostPopularPlaces(places));
